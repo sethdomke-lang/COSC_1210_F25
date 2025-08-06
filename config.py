@@ -1,0 +1,25 @@
+# config.py
+
+# Grid and Room Settings
+GRID_ROWS = 3
+GRID_COLS = 3
+ROOM_WIDTH = 200
+ROOM_HEIGHT = 200
+WALL_THICK = 4
+DOOR_SIZE = 40
+
+# Player Settings
+PLAYER_RADIUS = 10
+PLAYER_SPEED = 220
+
+# Screen Size
+WIDTH = ROOM_WIDTH * GRID_COLS
+HEIGHT = ROOM_HEIGHT * GRID_ROWS
+
+# Colors (R, G, B)
+BG_COLOR = (20, 20, 24)
+WALL_COLOR = (200, 200, 200)
+PLAYER_COLOR = (100, 200, 255)
+
+# Frames Per Second
+FPS = 60

@@ -1,4 +1,5 @@
 # adventure_functions.py
+import os
 import pygame
 import config
 
@@ -78,3 +79,32 @@ def draw_obstacle(screen):
     pygame.draw.line(screen, config.BOX_COLOR, (left, top), (left, bottom), config.WALL_THICK)
 
 
+_player_image = None
+_warned_once = False
+
+def load_player_image():
+    """Call once at startup after pygame.init()."""
+    global _player_image, _warned_once
+    _player_image = None  # default
+
+    path = getattr(config, "PLAYER_IMAGE_PATH", None)
+    size = getattr(config, "PLAYER_IMAGE_SIZE", None)
+
+    if path and os.path.exists(path):
+        img = pygame.image.load(path).convert_alpha()
+        if size:
+            img = pygame.transform.smoothscale(img, size)
+        _player_image = img
+    else:
+        if not _warned_once:
+            print("No player image found or PLAYER_IMAGE_PATH not set; using circle.")
+            _warned_once = True
+
+def draw_player(screen, x, y):
+    """Draw sprite centered at (x, y); fall back to circle if no image."""
+    if _player_image:
+        rect = _player_image.get_rect(center=(int(x), int(y)))
+        screen.blit(_player_image, rect.topleft)
+    else:
+        pygame.draw.circle(screen, config.PLAYER_COLOR, (int(x), int(y)), config.PLAYER_RADIUS)
+        pygame.draw.circle(screen, (0, 0, 0), (int(x), int(y)), config.PLAYER_RADIUS, 2)

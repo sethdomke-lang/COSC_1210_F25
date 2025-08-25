@@ -69,6 +69,7 @@ def is_blocked(x, y):
     return True
 
 def draw_obstacle(screen):
+    '''draws a simple box'''
     left = 10
     top = 10
     right = 20

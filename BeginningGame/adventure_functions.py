@@ -1,4 +1,4 @@
-# dungeon_functions.py
+# adventure_functions.py
 import pygame
 import config
 
@@ -66,3 +66,15 @@ def is_blocked(x, y):
                 return False
 
     return True
+
+def draw_obstacle(screen):
+    left = 10
+    top = 10
+    right = 20
+    bottom = 20
+    pygame.draw.line(screen, config.BOX_COLOR, (left, top), (right, top), config.WALL_THICK)
+    pygame.draw.line(screen, config.BOX_COLOR, (left, bottom), (right, bottom), config.WALL_THICK)
+    pygame.draw.line(screen, config.BOX_COLOR, (right, top), (right, bottom), config.WALL_THICK)
+    pygame.draw.line(screen, config.BOX_COLOR, (left, top), (left, bottom), config.WALL_THICK)
+
+

@@ -1,0 +1,9 @@
+__pycache__/
+.build/
+dist/
+build/
+*.wasm
+*.data
+*.js
+*.map
+.DS_Store

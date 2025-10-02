@@ -134,3 +134,6 @@ def show_game_over(screen):
         for event in pygame.event.get():
             if event.type == pygame.QUIT or event.type == pygame.KEYDOWN:
                 waiting = False
+                
+                
+                
